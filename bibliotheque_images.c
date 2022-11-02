@@ -101,14 +101,26 @@ int pgm_ecrire(char nom_fichier[], int matrice[MAX_HAUTEUR][MAX_LARGEUR],
                int maxval, struct MetaData metadonnees)
             	{
 				FILE* fp1;  
-				fp1 =fopen("tbo.txt", "w+"); 
+				fp1 =fopen("resultat.pgm", "w+"); 
 				if (fp1 == NULL) 
 				{ 
 				printf("erreur"); 
 				} 
 				else 
-				{ 
-				fprintf( fp1, "%d",matrice[MAX_HAUTEUR][MAX_LARGEUR] ); 
+				{
+				
+				fprintf(fp1,"%s", "P2\n");
+				fprintf(fp1, "%d %d\n",lignes,colonnes); 
+				for(int i=0;i< lignes;i++)
+				{
+				for(int j=0;j< colonnes;j++)
+				{
+					fprintf(fp1,"%d", matrice[i][j]);
+					fprintf(fp1,"%s", " ");
+				}
+				
+				fprintf(fp1, "%s", "\n");
+				} 
 				} 
 				if (fp1!=NULL) 
 				{ 
